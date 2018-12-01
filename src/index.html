@@ -1,0 +1,23 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <% if (htmlWebpackPlugin.options.system) { %>
+    <script src="//unpkg.com/systemjs/dist/system.js"></script>
+    <script src="//unpkg.com/systemjs/dist/extras/amd.js"></script>
+    <script>
+      System.import('<%= htmlWebpackPlugin.files.chunks.main.entry %>')
+    </script>
+    <% } else { %>
+    <script
+      data-main="<%= htmlWebpackPlugin.files.chunks.main.entry %>"
+      src="//unpkg.com/requirejs/require.js"
+    ></script>
+    <% } %>
+  </body>
+</html>
