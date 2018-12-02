@@ -17,6 +17,7 @@ script:
   - set -e
   - yarn lint
   - yarn demo
+  - cp -rf lib/* dist
   - 'if [[ $TRAVIS_BRANCH = "master" && "$TRAVIS_PULL_REQUEST" = "false" ]]; then bash sync.sh; fi'
 
 after_script: greenkeeper-lockfile-upload
