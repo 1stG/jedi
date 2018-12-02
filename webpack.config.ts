@@ -60,6 +60,7 @@ const config: Configuration = {
   mode: NODE_ENV,
   entry: {
     main: resolve('demo/index.tsx'),
+    index: resolve('src/index.tsx'),
   },
   output: {
     libraryTarget: 'amd',
