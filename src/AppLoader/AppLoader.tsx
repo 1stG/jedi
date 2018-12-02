@@ -26,7 +26,7 @@ export class AppLoader extends React.PureComponent<
     let loadUrl = appName
     if (!appName.startsWith('/')) {
       loadUrl =
-        process.env.CDN_APP_PREFIX + '//1stg.github.io/modules/@1stg/jedi-'
+        process.env.CDN_APP_PREFIX || '//1stg.github.io/modules/@1stg/jedi-'
 
       if (appName.includes('/')) {
         const [mainApp, ...rest] = appName.split('/')
