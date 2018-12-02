@@ -4,20 +4,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//unpkg.com/antd/dist/antd.css"
+    />
   </head>
   <body>
     <div id="app"></div>
     <% if (htmlWebpackPlugin.options.system) { %>
+    <script
+      type="systemjs-packagemap"
+      src="//1stg.github.io/modules/@1stg/jedi-modules-map/systemjs-packages.json"
+    ></script>
     <script src="//unpkg.com/systemjs/dist/system.js"></script>
     <script src="//unpkg.com/systemjs/dist/extras/amd.js"></script>
+    <script src="//unpkg.com/systemjs/dist/extras/named-register.js"></script>
     <script>
       System.import('<%= htmlWebpackPlugin.files.chunks.main.entry %>')
     </script>
     <% } else { %>
-    <script
-      data-main="<%= htmlWebpackPlugin.files.chunks.main.entry %>"
-      src="//unpkg.com/requirejs/require.js"
-    ></script>
+    <script src="//unpkg.com/requirejs/require.js"></script>
+    <script>
+      fetch(
+        '//1stg.github.io/modules/@1stg/jedi-modules-map/requirejs-paths.json',
+      )
+        .then(data => data.json())
+        .then(paths => {
+          requirejs.config({
+            paths,
+          })
+          requirejs(['<%= htmlWebpackPlugin.files.chunks.main.entry %>'])
+        })
+    </script>
     <% } %>
   </body>
 </html>

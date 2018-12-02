@@ -7,6 +7,7 @@ export interface IAppLoaderProps {
   loaderType?: LoaderType
   props?: Record<string, unknown>
   loading?: React.ReactNode
+  version?: string
 }
 
 export interface IAppLoaderState {
@@ -20,11 +21,31 @@ export class AppLoader extends React.PureComponent<
   state: IAppLoaderState = {}
 
   async componentDidMount() {
-    const { appName, loaderType } = this.props
+    const { appName, loaderType, version } = this.props
     const loader = getLoader(loaderType)
-    const [App] = await loader.load([
-      appName.startsWith('/') ? appName : `/${appName}.js`,
-    ])
+    let loadUrl = appName
+    if (!appName.startsWith('/')) {
+      loadUrl =
+        process.env.CDN_APP_PREFIX + '//1stg.github.io/modules/@1stg/jedi-'
+
+      if (appName.includes('/')) {
+        const [mainApp, ...rest] = appName.split('/')
+        loadUrl += mainApp
+        if (version) {
+          loadUrl += '/' + version
+        }
+        loadUrl += '/' + rest.join('/')
+      } else {
+        loadUrl += appName
+        if (version) {
+          loadUrl += '/' + version
+        }
+        loadUrl += '/index'
+      }
+
+      loadUrl += '.js'
+    }
+    const [App] = await loader.load([loadUrl])
     this.setState({ App })
   }
 

@@ -14,8 +14,10 @@ declare global {
   }
 }
 
-export const getModule = (module: any): any =>
+export const getModule = <T>(module: any): T =>
   (module && getModule(module.default)) || module
+
+const hot = () => (arg: any) => arg
 
 export const getLoader = (loaderType?: LoaderType): ILoader => {
   if (!loaderType) {
@@ -31,18 +33,26 @@ export const getLoader = (loaderType?: LoaderType): ILoader => {
 
   switch (loaderType) {
     case LoaderType.RequireJS:
+      define('react-hot-loader', () => ({ hot }))
       return {
         load<T extends any[]>(dependencies: string[]) {
           return new Promise<T>((resolve, reject) =>
             requirejs(
               dependencies,
-              (...modules: any) => resolve(modules.map(getModule)),
+              (...modules: any[]) => resolve(modules.map(getModule) as T),
               reject,
             ),
           )
         },
       }
     case LoaderType.SystemJS:
+      window.System.register('react-hot-loader', [], $export => {
+        $export({
+          default: { hot },
+          hot,
+        })
+        return {}
+      })
       return {
         load<T extends any[]>(dependencies: string[]) {
           return Promise.all(

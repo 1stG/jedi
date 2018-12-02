@@ -11,5 +11,5 @@ declare global {
         System: SystemJSLoader.System;
     }
 }
-export declare const getModule: (module: any) => any;
+export declare const getModule: <T>(module: any) => T;
 export declare const getLoader: (loaderType?: LoaderType | undefined) => ILoader;

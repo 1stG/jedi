@@ -3,7 +3,7 @@ import { resolve } from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { Configuration, DefinePlugin } from 'webpack'
 
-import { description } from './package.json'
+import { dependencies, description, peerDependencies } from './package.json'
 
 const DEV = 'development'
 
@@ -69,7 +69,7 @@ const config: Configuration = {
   resolve: {
     alias: {
       '@ant-design/icons/lib/dist': resolve('demo/icons'),
-      '@1stg/jedi': resolve('lib'),
+      '@1stg/jedi': resolve('src'),
     },
     extensions: ['.ts', '.tsx', '.js'],
   },
@@ -119,6 +119,11 @@ const config: Configuration = {
       inject: false,
       system: true,
     }),
+  ],
+  externals: [
+    ...Object.keys(dependencies),
+    ...Object.keys(peerDependencies),
+    'antd',
   ],
 }
 

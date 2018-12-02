@@ -18,6 +18,9 @@
     "react": "^16.6.3",
     "react-dom": "^16.6.3"
   },
+  "dependencies": {
+    "@babel/runtime": "^7.1.5"
+  },
   "devDependencies": {
     "@babel/core": "^7.1.6",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
@@ -25,7 +28,6 @@
     "@babel/preset-env": "^7.1.6",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.1.0",
-    "@babel/runtime": "^7.1.5",
     "@types/html-webpack-plugin": "^3.2.0",
     "@types/node": "^10.12.11",
     "@types/react": "^16.7.11",
@@ -38,7 +40,6 @@
     "antd": "^3.10.9",
     "autoprefixer": "^9.3.1",
     "babel-loader": "^8.0.4",
-    "babel-plugin-import": "^1.11.0",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.1",
     "cssnano": "^4.1.7",
@@ -53,6 +54,7 @@
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-hot-loader": "^4.3.12",
+    "requirejs": "^2.3.6",
     "rimraf": "^2.6.2",
     "serve": "^10.1.1",
     "style-loader": "^0.23.1",
@@ -79,14 +81,6 @@
     "plugins": [
       "@babel/proposal-class-properties",
       "@babel/transform-runtime",
-      [
-        "import",
-        {
-          "libraryName": "antd",
-          "libraryDirectory": "es",
-          "style": true
-        }
-      ],
       "react-hot-loader/babel"
     ]
   },

@@ -5,6 +5,7 @@ export interface IAppLoaderProps {
     loaderType?: LoaderType;
     props?: Record<string, unknown>;
     loading?: React.ReactNode;
+    version?: string;
 }
 export interface IAppLoaderState {
     App?: React.ComponentType;
