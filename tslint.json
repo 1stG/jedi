@@ -20,6 +20,6 @@
     "prettier": true
   },
   "linterOptions": {
-    "exclude": ["*.json"]
+    "exclude": ["*.json", "lib/**/*"]
   }
 }

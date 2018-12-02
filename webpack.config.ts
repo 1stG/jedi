@@ -59,8 +59,8 @@ const cssLoaders = (type: AdvancedCssType, modules = false) => [
 const config: Configuration = {
   mode: NODE_ENV,
   entry: {
-    main: resolve('src/index.tsx'),
-    app: resolve('src/App.tsx'),
+    main: resolve('demo/index.tsx'),
+    app: resolve('demo/App.tsx'),
   },
   output: {
     libraryTarget: 'amd',
@@ -68,7 +68,7 @@ const config: Configuration = {
   },
   resolve: {
     alias: {
-      '@ant-design/icons/lib/dist': resolve('src/icons'),
+      '@ant-design/icons/lib/dist': resolve('demo/icons'),
       '@1stg/jedi': resolve('lib'),
     },
     extensions: ['.ts', '.tsx', '.js'],
@@ -93,7 +93,7 @@ const config: Configuration = {
               {
                 loader: 'style-resources-loader',
                 options: {
-                  patterns: resolve('src/styles/variables.less'),
+                  patterns: resolve('demo/styles/variables.less'),
                 },
               },
             ],
@@ -115,7 +115,7 @@ const config: Configuration = {
     }),
     new HtmlWebpackPlugin({
       title: `jedi - ${description}`,
-      template: 'src/index.html',
+      template: 'demo/index.html',
       inject: false,
       system: true,
     }),

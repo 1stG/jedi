@@ -5,9 +5,13 @@
   "repository": "git@github.com:1stg/jedi.git",
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
+  "main": "./lib",
+  "module": "./lib",
+  "types": "./lib/index.d.ts",
   "scripts": {
     "dev": "nodemon",
-    "build": "rimraf dist && cross-env NODE_ENV=production webpack -p",
+    "build": "tsc -p src",
+    "build:demo": "rimraf dist && cross-env NODE_ENV=production webpack -p",
     "lint": "tslint -p . -t stylish"
   },
   "peerDependencies": {
@@ -99,7 +103,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged && npm run build && git add -A"
     }
   },
   "lint-staged": {
