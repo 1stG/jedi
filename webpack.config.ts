@@ -1,7 +1,7 @@
 import { resolve } from 'path'
 
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import { Configuration, DefinePlugin } from 'webpack'
+import { Configuration } from 'webpack'
 
 import { dependencies, description, peerDependencies } from './package.json'
 
@@ -60,7 +60,6 @@ const config: Configuration = {
   mode: NODE_ENV,
   entry: {
     main: resolve('demo/index.tsx'),
-    app: resolve('demo/App.tsx'),
   },
   output: {
     libraryTarget: 'amd',
@@ -68,7 +67,6 @@ const config: Configuration = {
   },
   resolve: {
     alias: {
-      '@ant-design/icons/lib/dist': resolve('demo/icons'),
       '@1stg/jedi': resolve('src'),
     },
     extensions: ['.ts', '.tsx', '.js'],
@@ -110,9 +108,6 @@ const config: Configuration = {
     ],
   },
   plugins: [
-    new DefinePlugin({
-      PUBLIC_PATH: JSON.stringify(publicPath),
-    }),
     new HtmlWebpackPlugin({
       title: `jedi - ${description}`,
       template: 'demo/index.html',
