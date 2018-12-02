@@ -4,12 +4,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>jedi - Customizable, pluggable and lazy loading first front-end project system</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//unpkg.com/antd/dist/antd.css"
+    />
   </head>
   <body>
     <div id="app"></div>
     
+    <script
+      type="systemjs-packagemap"
+      src="//1stg.github.io/modules/@1stg/jedi-modules-map/systemjs-packages.json"
+    ></script>
     <script src="//unpkg.com/systemjs/dist/system.js"></script>
     <script src="//unpkg.com/systemjs/dist/extras/amd.js"></script>
+    <script src="//unpkg.com/systemjs/dist/extras/named-register.js"></script>
     <script>
       System.import('/jedi/main.js')
     </script>
