@@ -58,7 +58,7 @@
     "serve": "^10.1.1",
     "style-loader": "^0.23.1",
     "style-resources-loader": "^1.2.1",
-    "ts-node": "^7.0.1",
+    "ts-node": "^8.1.0",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.17.0",
     "tslint-config-standard": "^8.0.1",
