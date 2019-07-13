@@ -37,7 +37,7 @@
     "@types/webpack": "^4.4.20",
     "@types/webpack-dev-server": "^3.1.1",
     "@types/webpack-env": "^1.13.6",
-    "antd": "^3.10.9",
+    "antd": "^3.20.2",
     "autoprefixer": "^9.3.1",
     "babel-loader": "^8.0.4",
     "cross-env": "^5.2.0",
